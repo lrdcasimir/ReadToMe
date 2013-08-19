@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CDCircle.h"
+#import "RadioClient.h"
 
-@interface derpViewController : UIViewController
+@interface derpViewController  : UIViewController <CDCircleDelegate,CDCircleDataSource,RadioClientDelegate>
 
 @end
