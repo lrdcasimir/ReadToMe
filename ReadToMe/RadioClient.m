@@ -73,6 +73,9 @@ NSNetServiceBrowser* serviceBrowser;
     [delegate radioRespondedWithJson:jsonResponse];
 }
 
+-(void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
+    NSLog(@"connection failed: %@", error);
+}
 
 
 @end
