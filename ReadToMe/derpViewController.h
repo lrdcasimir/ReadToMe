@@ -11,5 +11,9 @@
 #import "RadioClient.h"
 
 @interface derpViewController  : UIViewController <CDCircleDelegate,CDCircleDataSource,RadioClientDelegate>
+@property UIView* circleContainer;
+@property UIPanGestureRecognizer* recognizer;
+@property UILabel* bookTitle;
+
 
 @end
