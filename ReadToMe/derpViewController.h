@@ -9,11 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "CDCircle.h"
 #import "RadioClient.h"
+#import "ChapterWheelDataSource.h"
+#import "ChapterController.h"
 
-@interface derpViewController  : UIViewController <CDCircleDelegate,CDCircleDataSource,RadioClientDelegate>
+@interface derpViewController  : UIViewController <CDCircleDelegate,CDCircleDataSource,RadioClientDelegate,ChapterController>
 @property UIView* circleContainer;
+@property UIView* chapterCircleContainer;
 @property UIPanGestureRecognizer* recognizer;
+@property UISwipeGestureRecognizer* resetRecognizer;
 @property UILabel* bookTitle;
-
+@property NSDictionary* books;
+@property ChapterWheelDataSource* chapterDataSource;
 
 @end

@@ -28,7 +28,8 @@ NSNetServiceBrowser* serviceBrowser;
 }
 
 -(void) getListFromRadio {
-    NSURL* url = [NSURL URLWithString: [NSString stringWithFormat:@"http://%@:%d", self.readToMeService.hostName, self.readToMeService.port]];
+    UIDevice* device = [UIDevice currentDevice];
+    NSURL* url = [NSURL URLWithString: [NSString stringWithFormat:@"http://%@:%d/?udid=%@", self.readToMeService.hostName, self.readToMeService.port, [device.identifierForVendor UUIDString]]];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
     NSURLConnection* connection = [NSURLConnection connectionWithRequest:request delegate:self];
     [connection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
@@ -46,12 +47,10 @@ NSNetServiceBrowser* serviceBrowser;
 -(void) netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
     self.readToMeService = aNetService;
     self.readToMeService.delegate = self;
-    
-    
     if(!moreComing){
-        [serviceBrowser stop];
         [self.readToMeService resolveWithTimeout:5000];
     }
+    
 }
 
 -(void) netServiceDidResolveAddress:(NSNetService *)sender{
