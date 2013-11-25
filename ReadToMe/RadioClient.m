@@ -37,6 +37,11 @@ NSNetServiceBrowser* serviceBrowser;
 }
 
 -(void) requestTrack:(NSString *)path{
+    NSURL* url  = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%d/play?chapterPath=%@",
+                                         self.readToMeService.hostName, self.readToMeService.port,
+                                         path]];
+    NSLog(@"%@/%@", url.host, url.path);
+    
     
 }
 
@@ -69,7 +74,9 @@ NSNetServiceBrowser* serviceBrowser;
 
 -(void) connectionDidFinishLoading:(NSURLConnection *)connection{
     NSString* jsonResponse = [NSString stringWithUTF8String:self.rawServiceData.bytes];
+    self.rawServiceData = nil;
     [delegate radioRespondedWithJson:jsonResponse];
+    
 }
 
 -(void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{

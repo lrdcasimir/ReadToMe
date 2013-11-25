@@ -11,6 +11,7 @@
 #import "RadioClient.h"
 #import "ChapterWheelDataSource.h"
 #import "ChapterController.h"
+#import "PlayerControls.h"
 
 @interface derpViewController  : UIViewController <CDCircleDelegate,CDCircleDataSource,RadioClientDelegate,ChapterController>
 @property UIView* circleContainer;
@@ -18,7 +19,10 @@
 @property UIPanGestureRecognizer* recognizer;
 @property UISwipeGestureRecognizer* resetRecognizer;
 @property UILabel* bookTitle;
+@property UILabel* chapterTitle;
+@property PlayerControls* controls;
 @property NSDictionary* books;
 @property ChapterWheelDataSource* chapterDataSource;
+@property NSMutableArray* pathSegments;
 
 @end

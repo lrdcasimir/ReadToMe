@@ -34,6 +34,10 @@
 		FC45E5A717C0025C00A3DF75 /* 96-book.png in Resources */ = {isa = PBXBuildFile; fileRef = FC45E5A617C0025C00A3DF75 /* 96-book.png */; };
 		FC45E5AA17C0041C00A3DF75 /* iPod Click.aiff in Resources */ = {isa = PBXBuildFile; fileRef = FC45E5A917C0041C00A3DF75 /* iPod Click.aiff */; };
 		FC45E5AD17C1C16A00A3DF75 /* RadioClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FC45E5AC17C1C16A00A3DF75 /* RadioClient.m */; };
+		FC4754C81804E81E00392BCE /* ChapterWheelDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4754C71804E81E00392BCE /* ChapterWheelDataSource.m */; };
+		FC73CFFC183E81EF00D3AD85 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = FC73CFFB183E81EF00D3AD85 /* play.png */; };
+		FC73CFFE183E822C00D3AD85 /* controls.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC73CFFD183E822C00D3AD85 /* controls.xib */; };
+		FC73D001183ECA9700D3AD85 /* PlayerControls.m in Sources */ = {isa = PBXBuildFile; fileRef = FC73D000183ECA9700D3AD85 /* PlayerControls.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC16662F1807DB2E0078EF18 /* ChapterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChapterController.h; sourceTree = "<group>"; };
 		FC16A60B17BFF3A4005ADB35 /* ReadToMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadToMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC16A60F17BFF3A4005ADB35 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FC16A61117BFF3A4005ADB35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -90,6 +95,12 @@
 		FC45E5A917C0041C00A3DF75 /* iPod Click.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "iPod Click.aiff"; sourceTree = "<group>"; };
 		FC45E5AB17C1C16900A3DF75 /* RadioClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioClient.h; sourceTree = "<group>"; };
 		FC45E5AC17C1C16A00A3DF75 /* RadioClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioClient.m; sourceTree = "<group>"; };
+		FC4754C61804E81E00392BCE /* ChapterWheelDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterWheelDataSource.h; sourceTree = "<group>"; };
+		FC4754C71804E81E00392BCE /* ChapterWheelDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterWheelDataSource.m; sourceTree = "<group>"; };
+		FC73CFFB183E81EF00D3AD85 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		FC73CFFD183E822C00D3AD85 /* controls.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = controls.xib; sourceTree = "<group>"; };
+		FC73CFFF183ECA9700D3AD85 /* PlayerControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerControls.h; sourceTree = "<group>"; };
+		FC73D000183ECA9700D3AD85 /* PlayerControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerControls.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +165,7 @@
 		FC16A61517BFF3A4005ADB35 /* ReadToMe */ = {
 			isa = PBXGroup;
 			children = (
+				FC16662F1807DB2E0078EF18 /* ChapterController.h */,
 				FC16A65117BFF474005ADB35 /* Wheel */,
 				FC16A61E17BFF3A4005ADB35 /* derpAppDelegate.h */,
 				FC16A61F17BFF3A4005ADB35 /* derpAppDelegate.m */,
@@ -164,6 +176,10 @@
 				FC16A61617BFF3A4005ADB35 /* Supporting Files */,
 				FC45E5AB17C1C16900A3DF75 /* RadioClient.h */,
 				FC45E5AC17C1C16A00A3DF75 /* RadioClient.m */,
+				FC4754C61804E81E00392BCE /* ChapterWheelDataSource.h */,
+				FC4754C71804E81E00392BCE /* ChapterWheelDataSource.m */,
+				FC73CFFF183ECA9700D3AD85 /* PlayerControls.h */,
+				FC73D000183ECA9700D3AD85 /* PlayerControls.m */,
 			);
 			path = ReadToMe;
 			sourceTree = "<group>";
@@ -171,6 +187,7 @@
 		FC16A61617BFF3A4005ADB35 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FC73CFFB183E81EF00D3AD85 /* play.png */,
 				FC45E5A917C0041C00A3DF75 /* iPod Click.aiff */,
 				FC45E5A617C0025C00A3DF75 /* 96-book.png */,
 				FC16A61717BFF3A4005ADB35 /* ReadToMe-Info.plist */,
@@ -180,6 +197,7 @@
 				FC16A62117BFF3A4005ADB35 /* Default.png */,
 				FC16A62317BFF3A4005ADB35 /* Default@2x.png */,
 				FC16A62517BFF3A4005ADB35 /* Default-568h@2x.png */,
+				FC73CFFD183E822C00D3AD85 /* controls.xib */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -302,6 +320,8 @@
 				FC16A62C17BFF3A4005ADB35 /* MainStoryboard_iPad.storyboard in Resources */,
 				FC45E5A717C0025C00A3DF75 /* 96-book.png in Resources */,
 				FC45E5AA17C0041C00A3DF75 /* iPod Click.aiff in Resources */,
+				FC73CFFC183E81EF00D3AD85 /* play.png in Resources */,
+				FC73CFFE183E822C00D3AD85 /* controls.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +366,8 @@
 				FC16A66217BFF4A0005ADB35 /* CDIconView.m in Sources */,
 				FC16A66317BFF4A0005ADB35 /* Common.m in Sources */,
 				FC45E5AD17C1C16A00A3DF75 /* RadioClient.m in Sources */,
+				FC4754C81804E81E00392BCE /* ChapterWheelDataSource.m in Sources */,
+				FC73D001183ECA9700D3AD85 /* PlayerControls.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +483,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ReadToMe/ReadToMe-Prefix.pch";
 				INFOPLIST_FILE = "ReadToMe/ReadToMe-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -472,6 +495,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ReadToMe/ReadToMe-Prefix.pch";
 				INFOPLIST_FILE = "ReadToMe/ReadToMe-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

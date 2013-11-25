@@ -21,12 +21,13 @@ CGRect initialCirclePosition;
 CDCircle* circleMenu;
 RadioClient* radioClient;
 BOOL bookTitleDisplayed = NO;
+BOOL chapterDisplayed = NO;
 CGPoint initialBookTitleCenterPoint;
 
 
 - (void) initCircleMenu { 
     NSUInteger numberOfBooks = [[self.books allKeys] count];
-    circleMenu = [[CDCircle alloc] initWithFrame:CGRectMake(0, 0, 280, 280) numberOfSegments:numberOfBooks ringWidth:100];
+    circleMenu = [[CDCircle alloc] initWithFrame:CGRectMake(20, 0, 280, 280) numberOfSegments:numberOfBooks ringWidth:100];
     circleMenu.delegate = self;
     circleMenu.dataSource = self;
     CDCircleOverlayView *overlay = [[CDCircleOverlayView alloc] initWithCircle:circleMenu];
@@ -56,14 +57,16 @@ CGPoint initialBookTitleCenterPoint;
     self.chapterDataSource = [[ChapterWheelDataSource alloc] init];
     self.chapterDataSource.controller = self;
     self.chapterDataSource.parentDataSource = self;
-    initialCirclePosition = CGRectMake(-30, 40, 280, 280);
+    initialCirclePosition = CGRectMake(0, 40, 280, 280);
 	// Do any additional setup after loading the view, typically from a nib.
     radioClient = [[RadioClient alloc] init];
     radioClient.delegate = self;
     [radioClient discoverRadioLister]; //later
     
-    self.circleContainer = [[UIView alloc] initWithFrame:initialCirclePosition];
     
+    self.circleContainer = [[UIView alloc] initWithFrame:initialCirclePosition];
+    self.chapterTitle = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.circleContainer.frame), CGRectGetMinY(self.circleContainer.frame) -100, 280, 100)];
+    self.controls = [[[NSBundle mainBundle] loadNibNamed:@"controls" owner:self options:nil] objectAtIndex:0];
 
     
 }
@@ -83,6 +86,7 @@ CGPoint initialBookTitleCenterPoint;
 }
 
 -(void) displayBookTitle:(NSString*)title{
+    self.pathSegments = [NSMutableArray arrayWithArray:@[title]];
     [self.chapterCircleContainer removeFromSuperview];
     [self.bookTitle removeFromSuperview];
     NSDictionary* chapters = [self.books objectForKey:title];
@@ -91,7 +95,7 @@ CGPoint initialBookTitleCenterPoint;
     }
     
     self.chapterDataSource.chapters = chapters;
-    CDCircle* chapterCircleMenu = [[CDCircle alloc] initWithFrame:CGRectMake(0, 0, 280, 280) numberOfSegments:[[chapters allKeys] count] ringWidth:100];
+    CDCircle* chapterCircleMenu = [[CDCircle alloc] initWithFrame:CGRectMake(20, 0, 280, 280) numberOfSegments:[[chapters allKeys] count] ringWidth:100];
     chapterCircleMenu.circleColor = circleMenu.circleColor;
     CDCircleOverlayView* overlay = [[CDCircleOverlayView alloc] initWithCircle:chapterCircleMenu];
     self.bookTitle = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.circleContainer.frame), CGRectGetMinY(self.circleContainer.frame) -100, 280, 100)];
@@ -145,13 +149,28 @@ CGPoint initialBookTitleCenterPoint;
     
 }
 
+-(void) hideChapter:(NSString*)nextChapter {
+    [UIView animateWithDuration:0.3 animations:^(void){
+        self.controls.center = CGPointMake(self.controls.center.x, -10);
+        self.chapterTitle.center = CGPointMake(self.chapterTitle.center.x, 0);
+        self.chapterCircleContainer.center = CGPointMake(self.chapterCircleContainer.center.x, 10);
+        self.bookTitle.center = CGPointMake(self.bookTitle.center.x,
+                                            335);
+        
+    }
+    completion:^(BOOL finished) {
+        chapterDisplayed = NO;
+        [self displayChapter:nextChapter];
+    }];
+}
+
 -(void) displayChapters {
     
     
     [self.view removeGestureRecognizer:self.recognizer];
     [self.view addGestureRecognizer:self.resetRecognizer];
 
-    [UIView animateWithDuration:0.3 animations:^(void){
+    [UIView animateWithDuration:0.5 animations:^(void){
         
         self.bookTitle.center = CGPointMake(self.bookTitle.center.x,
                                             335);
@@ -182,9 +201,13 @@ CGPoint initialBookTitleCenterPoint;
 -(void) radioRespondedWithJson:(NSString *)response{
     NSLog(@"JSON! %@", response);
     NSDictionary* jsonParsed = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves error:nil];
-    self.books = [jsonParsed objectForKey:@"./books"];
-    [self initCircleMenu];
-    NSLog(@"PARSED! %@", jsonParsed);
+        NSLog(@"PARSED! %@", jsonParsed);
+    if(jsonParsed == nil){
+        [radioClient getListFromRadio];
+    } else {
+        self.books = [jsonParsed objectForKey:@"./books"];
+        [self initCircleMenu];
+    }
 }
 
 -(IBAction)panning:(id)sender{
@@ -232,13 +255,62 @@ CGPoint initialBookTitleCenterPoint;
 
 
 -(void) displayChapter:(NSString *)chapterTitle{
+    if(chapterDisplayed){
+        [self hideChapter:chapterTitle];
+    }
     
+    self.chapterTitle.text = chapterTitle;
+    
+    self.chapterTitle.font = [UIFont fontWithName:@"Hevetica Neue" size:16];
+    float total_y_offset = CGRectGetHeight(self.chapterTitle.frame) + CGRectGetHeight(self.controls.frame);
+    float title_y_offset = CGRectGetHeight(self.chapterTitle.frame);
+    self.chapterTitle.frame = CGRectMake(CGRectGetMinX(self.chapterCircleContainer.frame),
+                                         CGRectGetMinY(self.chapterCircleContainer.frame) - title_y_offset ,
+                                         CGRectGetWidth( self.chapterTitle.frame ),
+                                         CGRectGetHeight( self.chapterTitle.frame));
+    self.controls.frame = CGRectMake(
+                                     CGRectGetMinX(self.chapterCircleContainer.frame),
+                                     CGRectGetMinY(self.chapterCircleContainer.frame) - total_y_offset,
+                                     CGRectGetWidth(self.controls.frame),
+                                     CGRectGetHeight(self.controls.frame));
+    [self.view addSubview:self.chapterTitle];
+    [self.view addSubview:self.controls];
+    [self.controls.playButton addTarget:self action:@selector(playChapter:) forControlEvents:UIControlEventTouchDown];
+    
+    [UIView animateWithDuration:0.3 animations:^(void){
+        self.chapterTitle.frame             = CGRectMake(CGRectGetMinX(self.chapterCircleContainer.frame),
+                                                         CGRectGetMinY(self.chapterCircleContainer.frame) ,
+                                                         CGRectGetWidth( self.chapterTitle.frame ),
+                                                         CGRectGetHeight( self.chapterTitle.frame));
+        self.controls.frame                 = CGRectMake(
+                                                         CGRectGetMinX(self.chapterCircleContainer.frame),
+                                                         CGRectGetMinY(self.chapterCircleContainer.frame) + total_y_offset - title_y_offset,
+                                                         CGRectGetWidth(self.chapterCircleContainer.frame),
+                                                         CGRectGetHeight(self.controls.frame));
+        self.chapterCircleContainer.frame   = CGRectMake(
+                                                        CGRectGetMinX(self.chapterCircleContainer.frame),
+                                                         CGRectGetMinY(self.chapterCircleContainer.frame) + total_y_offset,
+                                                         CGRectGetWidth(self.chapterCircleContainer.frame),
+                                                         CGRectGetHeight(self.chapterCircleContainer.frame));
+        self.bookTitle.center = CGPointMake(self.bookTitle.center.x, self.bookTitle.center.y
+                                            + total_y_offset);
+        
+    }];
+    chapterDisplayed = YES;
+    
+}
+
+-(IBAction) playChapter:(id)sender {
+    [radioClient requestTrack:[NSString pathWithComponents:self.pathSegments]];
     
 }
 
 
 -(IBAction)resetView:(id)sender{
     [self.chapterCircleContainer removeFromSuperview];
+    [self.bookTitle removeFromSuperview];
+    [self.controls removeFromSuperview];
+    [self.chapterTitle removeFromSuperview];
     [self hideBookTitle:nil];
     [self.view addGestureRecognizer:self.recognizer];
     [self.view removeGestureRecognizer:self.resetRecognizer];
