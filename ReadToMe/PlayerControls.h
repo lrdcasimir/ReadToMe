@@ -10,4 +10,5 @@
 
 @interface PlayerControls : UIView
 @property (nonatomic, strong) IBOutlet UIButton* playButton;
+@property (nonatomic, strong) IBOutlet UIButton* pauseButton;
 @end

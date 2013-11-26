@@ -259,6 +259,10 @@ CGPoint initialBookTitleCenterPoint;
         [self hideChapter:chapterTitle];
     }
     
+    if([self.pathSegments count] > 1){
+        [self.pathSegments removeLastObject];
+    }
+    [self.pathSegments addObject:chapterTitle];
     self.chapterTitle.text = chapterTitle;
     
     self.chapterTitle.font = [UIFont fontWithName:@"Hevetica Neue" size:16];
@@ -276,6 +280,7 @@ CGPoint initialBookTitleCenterPoint;
     [self.view addSubview:self.chapterTitle];
     [self.view addSubview:self.controls];
     [self.controls.playButton addTarget:self action:@selector(playChapter:) forControlEvents:UIControlEventTouchDown];
+    [self.controls.pauseButton addTarget:self action:@selector(pauseChapter:) forControlEvents:UIControlEventTouchDown];
     
     [UIView animateWithDuration:0.3 animations:^(void){
         self.chapterTitle.frame             = CGRectMake(CGRectGetMinX(self.chapterCircleContainer.frame),
@@ -302,9 +307,20 @@ CGPoint initialBookTitleCenterPoint;
 
 -(IBAction) playChapter:(id)sender {
     [radioClient requestTrack:[NSString pathWithComponents:self.pathSegments]];
-    
+    self.controls.playButton.hidden = YES;
+    self.controls.pauseButton.hidden = NO;
+    self.controls.pauseButton.userInteractionEnabled = YES;
+    self.controls.playButton.userInteractionEnabled = NO;
 }
 
+
+-(IBAction) pauseChapter:(id)sender {
+    [radioClient pause];
+    self.controls.pauseButton.hidden = YES;
+    self.controls.playButton.hidden = NO;
+    self.controls.pauseButton.userInteractionEnabled = NO;
+    self.controls.playButton.userInteractionEnabled = YES;
+}
 
 -(IBAction)resetView:(id)sender{
     [self.chapterCircleContainer removeFromSuperview];

@@ -12,6 +12,8 @@
 
 id <RadioClientDelegate> delegate;
 NSNetServiceBrowser* serviceBrowser;
+NSInteger portNumber;
+
 
 @synthesize delegate;
 
@@ -38,11 +40,20 @@ NSNetServiceBrowser* serviceBrowser;
 
 -(void) requestTrack:(NSString *)path{
     NSURL* url  = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%d/play?chapterPath=%@",
-                                         self.readToMeService.hostName, self.readToMeService.port,
-                                         path]];
-    NSLog(@"%@/%@", url.host, url.path);
+                                         self.hostname, portNumber,
+                                         [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    NSLog(@"%@", url);
+    NSURLRequest* request = [NSURLRequest requestWithURL:url];
+    self.stopPlayConnection  = [NSURLConnection connectionWithRequest:request delegate:self];
+    [self.stopPlayConnection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     
-    
+}
+
+-(void) pause {
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%d/pause", self.hostname,portNumber]];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url];
+    self.stopPlayConnection = [NSURLConnection connectionWithRequest:request delegate:self];
+    [self.stopPlayConnection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
 }
 
 -(void) netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didNotSearch:(NSDictionary *)errorDict{
@@ -61,21 +72,42 @@ NSNetServiceBrowser* serviceBrowser;
 -(void) netServiceDidResolveAddress:(NSNetService *)sender{
     self.readToMeService = sender;
     [delegate radioDiscovered:[NSString stringWithFormat:@"%@:%d", sender.hostName, sender.port]];
+    self.hostname = sender.hostName;
+    portNumber = sender.port;
 }
 
 -(void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
-    self.rawServiceData = [[NSMutableData alloc] initWithCapacity:response.expectedContentLength];
-    
+    if(connection == self.stopPlayConnection){
+        return;
+    }
+    if(self.rawServiceData == nil){
+        self.rawServiceData = [[NSMutableData alloc] initWithCapacity:response.expectedContentLength];
+    }
+
 }
 
 -(void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    [self.rawServiceData appendBytes:data.bytes length:data.length];
+    if(data == nil || connection == self.stopPlayConnection){
+        return;
+    }
+    
+    if(self.rawServiceData != nil){
+        [self.rawServiceData appendBytes:data.bytes length:data.length];
+    } else {
+        self.rawServiceData = [NSMutableData dataWithData:data];
+    }
 }
 
 -(void) connectionDidFinishLoading:(NSURLConnection *)connection{
-    NSString* jsonResponse = [NSString stringWithUTF8String:self.rawServiceData.bytes];
-    self.rawServiceData = nil;
-    [delegate radioRespondedWithJson:jsonResponse];
+    if(connection == self.stopPlayConnection){
+        NSLog(@"play request finished");
+        [self.stopPlayConnection unscheduleFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    }
+    if(self.rawServiceData != nil){
+        NSString* jsonResponse = [NSString stringWithUTF8String:self.rawServiceData.bytes];
+        self.rawServiceData = nil;
+        [delegate radioRespondedWithJson:jsonResponse];
+    }
     
 }
 

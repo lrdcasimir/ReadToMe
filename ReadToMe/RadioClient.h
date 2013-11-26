@@ -21,10 +21,15 @@
 @property (atomic, retain) id <RadioClientDelegate>  delegate;
 @property (atomic, strong) NSNetService* readToMeService;
 @property (strong, atomic) NSMutableData* rawServiceData;
+@property (strong, atomic) NSString* hostname;
+@property (strong, atomic) NSURLConnection* stopPlayConnection;
+
 -(void) discoverRadioLister;
 
 -(void) getListFromRadio;
 
 -(void) requestTrack:(NSString*)path;
+
+-(void) pause;
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC055F5718452F5200511594 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = FC055F5618452F5200511594 /* pause.png */; };
 		FC16A61017BFF3A4005ADB35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC16A60F17BFF3A4005ADB35 /* UIKit.framework */; };
 		FC16A61217BFF3A4005ADB35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC16A61117BFF3A4005ADB35 /* Foundation.framework */; };
 		FC16A61417BFF3A4005ADB35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC16A61317BFF3A4005ADB35 /* CoreGraphics.framework */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC055F5618452F5200511594 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		FC16662F1807DB2E0078EF18 /* ChapterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChapterController.h; sourceTree = "<group>"; };
 		FC16A60B17BFF3A4005ADB35 /* ReadToMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadToMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC16A60F17BFF3A4005ADB35 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				FC73CFFB183E81EF00D3AD85 /* play.png */,
+				FC055F5618452F5200511594 /* pause.png */,
 				FC45E5A917C0041C00A3DF75 /* iPod Click.aiff */,
 				FC45E5A617C0025C00A3DF75 /* 96-book.png */,
 				FC16A61717BFF3A4005ADB35 /* ReadToMe-Info.plist */,
@@ -322,6 +325,7 @@
 				FC45E5AA17C0041C00A3DF75 /* iPod Click.aiff in Resources */,
 				FC73CFFC183E81EF00D3AD85 /* play.png in Resources */,
 				FC73CFFE183E822C00D3AD85 /* controls.xib in Resources */,
+				FC055F5718452F5200511594 /* pause.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
