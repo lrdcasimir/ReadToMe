@@ -93,7 +93,7 @@ NSInteger portNumber;
     
     if(self.rawServiceData != nil){
         [self.rawServiceData appendBytes:data.bytes length:data.length];
-    } else {
+    } else if(data != nil) {
         self.rawServiceData = [NSMutableData dataWithData:data];
     }
 }

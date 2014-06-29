@@ -14,8 +14,12 @@
 #import "PlayerControls.h"
 
 @interface derpViewController  : UIViewController <CDCircleDelegate,CDCircleDataSource,RadioClientDelegate,ChapterController>
+@property (nonatomic,strong) IBOutlet UILabel* discoveryStatus;
+@property (nonatomic,strong) IBOutlet UIActivityIndicatorView* spinner;
 @property UIView* circleContainer;
 @property UIView* chapterCircleContainer;
+@property CDCircle* chapterCircleMenu;
+@property CDCircleOverlayView* chapterCircleOverlay;
 @property UIPanGestureRecognizer* recognizer;
 @property UISwipeGestureRecognizer* resetRecognizer;
 @property UILabel* bookTitle;
