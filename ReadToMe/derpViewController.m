@@ -198,6 +198,11 @@ CGRect initialChapterTitleFrame;
             CGRectGetMaxY(self.chapterCircleContainer.frame),
             CGRectGetWidth(self.bookTitle.frame),
             CGRectGetHeight(self.bookTitle.frame));
+        self.circleContainer.frame = CGRectMake(
+            CGRectGetMinX(self.circleContainer.frame),
+            CGRectGetMaxY(self.bookTitle.frame),
+            CGRectGetWidth(self.circleContainer.frame),
+            CGRectGetHeight(self.circleContainer.frame));
         
     }
     completion:^(BOOL finished) {
@@ -250,9 +255,13 @@ CGRect initialChapterTitleFrame;
         self.spinner.alpha = 0;
         self.discoveryStatus.alpha = 0;
     }];
+    NSDictionary* jsonParsed = nil;
     NSLog(@"JSON! %@", response);
-    NSDictionary* jsonParsed = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves error:nil];
+    if(response != nil){
+        jsonParsed = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves error:nil];
         NSLog(@"PARSED! %@", jsonParsed);
+    }
+    
     if(jsonParsed == nil){
         [radioClient getListFromRadio];
     } else {
@@ -353,7 +362,17 @@ CGRect initialChapterTitleFrame;
                                                          CGRectGetMaxY(self.controls.frame),
                                                          CGRectGetWidth(self.chapterCircleContainer.frame),
                                                          CGRectGetHeight(self.chapterCircleContainer.frame));
-        
+        self.bookTitle.frame                = CGRectMake(
+                                                         CGRectGetMinX(self.bookTitle.frame),
+                                                         CGRectGetMaxY(self.chapterCircleContainer.frame),
+                                                         CGRectGetWidth(self.bookTitle.frame),
+                                                         CGRectGetHeight(self.bookTitle.frame));
+        self.circleContainer.frame          = CGRectMake(
+                                                         CGRectGetMinX(self.circleContainer.frame),
+                                                         CGRectGetMaxY(self.bookTitle.frame),
+                                                         CGRectGetWidth(self.circleContainer.frame),
+                                                         CGRectGetHeight(self.circleContainer.frame)
+        );
         
     }];
     chapterDisplayed = YES;
