@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F9FB768195A212E00AD3F95 /* glyphicons_071_book.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F9FB767195A212E00AD3F95 /* glyphicons_071_book.png */; };
 		FC055F5718452F5200511594 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = FC055F5618452F5200511594 /* pause.png */; };
 		FC16A61017BFF3A4005ADB35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC16A60F17BFF3A4005ADB35 /* UIKit.framework */; };
 		FC16A61217BFF3A4005ADB35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC16A61117BFF3A4005ADB35 /* Foundation.framework */; };
@@ -32,7 +33,6 @@
 		FC16A66217BFF4A0005ADB35 /* CDIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC16A65B17BFF4A0005ADB35 /* CDIconView.m */; };
 		FC16A66317BFF4A0005ADB35 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = FC16A65D17BFF4A0005ADB35 /* Common.m */; };
 		FC16A66B17BFF7CC005ADB35 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC16A66A17BFF7CC005ADB35 /* AudioToolbox.framework */; };
-		FC45E5A717C0025C00A3DF75 /* 96-book.png in Resources */ = {isa = PBXBuildFile; fileRef = FC45E5A617C0025C00A3DF75 /* 96-book.png */; };
 		FC45E5AA17C0041C00A3DF75 /* iPod Click.aiff in Resources */ = {isa = PBXBuildFile; fileRef = FC45E5A917C0041C00A3DF75 /* iPod Click.aiff */; };
 		FC45E5AD17C1C16A00A3DF75 /* RadioClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FC45E5AC17C1C16A00A3DF75 /* RadioClient.m */; };
 		FC4754C81804E81E00392BCE /* ChapterWheelDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4754C71804E81E00392BCE /* ChapterWheelDataSource.m */; };
@@ -52,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F9FB767195A212E00AD3F95 /* glyphicons_071_book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_071_book.png; sourceTree = "<group>"; };
 		FC055F5618452F5200511594 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		FC16662F1807DB2E0078EF18 /* ChapterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChapterController.h; sourceTree = "<group>"; };
 		FC16A60B17BFF3A4005ADB35 /* ReadToMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadToMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,7 +94,6 @@
 		FC16A66617BFF76E005ADB35 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		FC16A66817BFF79F005ADB35 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		FC16A66A17BFF7CC005ADB35 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		FC45E5A617C0025C00A3DF75 /* 96-book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "96-book.png"; path = "../../../Downloads/glyphish-icons/PNG icons/96-book.png"; sourceTree = "<group>"; };
 		FC45E5A917C0041C00A3DF75 /* iPod Click.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "iPod Click.aiff"; sourceTree = "<group>"; };
 		FC45E5AB17C1C16900A3DF75 /* RadioClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioClient.h; sourceTree = "<group>"; };
 		FC45E5AC17C1C16A00A3DF75 /* RadioClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioClient.m; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 				FC73CFFB183E81EF00D3AD85 /* play.png */,
 				FC055F5618452F5200511594 /* pause.png */,
 				FC45E5A917C0041C00A3DF75 /* iPod Click.aiff */,
-				FC45E5A617C0025C00A3DF75 /* 96-book.png */,
+				2F9FB767195A212E00AD3F95 /* glyphicons_071_book.png */,
 				FC16A61717BFF3A4005ADB35 /* ReadToMe-Info.plist */,
 				FC16A61817BFF3A4005ADB35 /* InfoPlist.strings */,
 				FC16A61B17BFF3A4005ADB35 /* main.m */,
@@ -291,6 +291,11 @@
 				CLASSPREFIX = derp;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Vann-Campbell, Tyler";
+				TargetAttributes = {
+					FC16A60A17BFF3A4005ADB35 = {
+						DevelopmentTeam = TRBE7YQ5LS;
+					};
+				};
 			};
 			buildConfigurationList = FC16A60517BFF3A4005ADB35 /* Build configuration list for PBXProject "ReadToMe" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -321,7 +326,7 @@
 				FC16A62617BFF3A4005ADB35 /* Default-568h@2x.png in Resources */,
 				FC16A62917BFF3A4005ADB35 /* MainStoryboard_iPhone.storyboard in Resources */,
 				FC16A62C17BFF3A4005ADB35 /* MainStoryboard_iPad.storyboard in Resources */,
-				FC45E5A717C0025C00A3DF75 /* 96-book.png in Resources */,
+				2F9FB768195A212E00AD3F95 /* glyphicons_071_book.png in Resources */,
 				FC45E5AA17C0041C00A3DF75 /* iPod Click.aiff in Resources */,
 				FC73CFFC183E81EF00D3AD85 /* play.png in Resources */,
 				FC73CFFE183E822C00D3AD85 /* controls.xib in Resources */,
@@ -484,11 +489,14 @@
 		FC16A64817BFF3A5005ADB35 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ReadToMe/ReadToMe-Prefix.pch";
 				INFOPLIST_FILE = "ReadToMe/ReadToMe-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -496,11 +504,14 @@
 		FC16A64917BFF3A5005ADB35 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ReadToMe/ReadToMe-Prefix.pch";
 				INFOPLIST_FILE = "ReadToMe/ReadToMe-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
