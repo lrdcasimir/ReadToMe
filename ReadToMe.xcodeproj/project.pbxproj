@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F5D4DF419BBE173007CFBA0 /* Vorbis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D4DF219BBE173007CFBA0 /* Vorbis.framework */; };
+		2F5D4DF819BBE534007CFBA0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D4DF719BBE534007CFBA0 /* AudioToolbox.framework */; };
+		2F5D4DFA19BBE550007CFBA0 /* Ogg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5D4DF919BBE550007CFBA0 /* Ogg.framework */; };
 		2F9FB768195A212E00AD3F95 /* glyphicons_071_book.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F9FB767195A212E00AD3F95 /* glyphicons_071_book.png */; };
+		2FDD7B0F19B9A4CD0079DCB1 /* IDZAQAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD7B0619B9A4CD0079DCB1 /* IDZAQAudioPlayer.m */; };
+		2FDD7B1319B9A4CD0079DCB1 /* IDZOggVorbisFileDecoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD7B0E19B9A4CD0079DCB1 /* IDZOggVorbisFileDecoder.mm */; };
+		72C053E5D147486A9323F4C3 /* libPods-ReadToMe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 133E3D3253754824A6174FF1 /* libPods-ReadToMe.a */; };
 		FC055F5718452F5200511594 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = FC055F5618452F5200511594 /* pause.png */; };
 		FC16A61017BFF3A4005ADB35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC16A60F17BFF3A4005ADB35 /* UIKit.framework */; };
 		FC16A61217BFF3A4005ADB35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC16A61117BFF3A4005ADB35 /* Foundation.framework */; };
@@ -32,7 +38,6 @@
 		FC16A66117BFF4A0005ADB35 /* CDCircleThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = FC16A65917BFF4A0005ADB35 /* CDCircleThumb.m */; };
 		FC16A66217BFF4A0005ADB35 /* CDIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC16A65B17BFF4A0005ADB35 /* CDIconView.m */; };
 		FC16A66317BFF4A0005ADB35 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = FC16A65D17BFF4A0005ADB35 /* Common.m */; };
-		FC16A66B17BFF7CC005ADB35 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC16A66A17BFF7CC005ADB35 /* AudioToolbox.framework */; };
 		FC45E5AA17C0041C00A3DF75 /* iPod Click.aiff in Resources */ = {isa = PBXBuildFile; fileRef = FC45E5A917C0041C00A3DF75 /* iPod Click.aiff */; };
 		FC45E5AD17C1C16A00A3DF75 /* RadioClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FC45E5AC17C1C16A00A3DF75 /* RadioClient.m */; };
 		FC4754C81804E81E00392BCE /* ChapterWheelDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4754C71804E81E00392BCE /* ChapterWheelDataSource.m */; };
@@ -52,7 +57,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		133E3D3253754824A6174FF1 /* libPods-ReadToMe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReadToMe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F5D4DEF19BBDF2D007CFBA0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioToolbox.framework; sourceTree = "<group>"; };
+		2F5D4DF119BBE173007CFBA0 /* Ogg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ogg.framework; path = ReadToMe/Ogg.framework; sourceTree = "<group>"; };
+		2F5D4DF219BBE173007CFBA0 /* Vorbis.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vorbis.framework; path = ReadToMe/Vorbis.framework; sourceTree = "<group>"; };
+		2F5D4DF519BBE476007CFBA0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		2F5D4DF719BBE534007CFBA0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		2F5D4DF919BBE550007CFBA0 /* Ogg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Ogg.framework; sourceTree = "<group>"; };
 		2F9FB767195A212E00AD3F95 /* glyphicons_071_book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_071_book.png; sourceTree = "<group>"; };
+		2FDD7B0419B9A4CD0079DCB1 /* IDZAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDZAudioPlayer.h; sourceTree = "<group>"; };
+		2FDD7B0519B9A4CD0079DCB1 /* IDZAQAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDZAQAudioPlayer.h; sourceTree = "<group>"; };
+		2FDD7B0619B9A4CD0079DCB1 /* IDZAQAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDZAQAudioPlayer.m; sourceTree = "<group>"; };
+		2FDD7B0819B9A4CD0079DCB1 /* IDZAudioPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDZAudioPlayerViewController.h; sourceTree = "<group>"; };
+		2FDD7B0A19B9A4CD0079DCB1 /* IDZAQAudioPlayerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDZAQAudioPlayerAppDelegate.h; sourceTree = "<group>"; };
+		2FDD7B0C19B9A4CD0079DCB1 /* IDZAudioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDZAudioDecoder.h; sourceTree = "<group>"; };
+		2FDD7B0D19B9A4CD0079DCB1 /* IDZOggVorbisFileDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDZOggVorbisFileDecoder.h; sourceTree = "<group>"; };
+		2FDD7B0E19B9A4CD0079DCB1 /* IDZOggVorbisFileDecoder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IDZOggVorbisFileDecoder.mm; sourceTree = "<group>"; };
+		570F68E2CED9490FA5A608F8 /* Pods-ReadToMe.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadToMe.xcconfig"; path = "Pods/Pods-ReadToMe.xcconfig"; sourceTree = "<group>"; };
 		FC055F5618452F5200511594 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		FC16662F1807DB2E0078EF18 /* ChapterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChapterController.h; sourceTree = "<group>"; };
 		FC16A60B17BFF3A4005ADB35 /* ReadToMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadToMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,10 +111,6 @@
 		FC16A65B17BFF4A0005ADB35 /* CDIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDIconView.m; sourceTree = "<group>"; };
 		FC16A65C17BFF4A0005ADB35 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		FC16A65D17BFF4A0005ADB35 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
-		FC16A66417BFF71D005ADB35 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-		FC16A66617BFF76E005ADB35 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		FC16A66817BFF79F005ADB35 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		FC16A66A17BFF7CC005ADB35 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FC45E5A917C0041C00A3DF75 /* iPod Click.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "iPod Click.aiff"; sourceTree = "<group>"; };
 		FC45E5AB17C1C16900A3DF75 /* RadioClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioClient.h; sourceTree = "<group>"; };
 		FC45E5AC17C1C16A00A3DF75 /* RadioClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioClient.m; sourceTree = "<group>"; };
@@ -110,10 +127,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC16A66B17BFF7CC005ADB35 /* AudioToolbox.framework in Frameworks */,
+				2F5D4DF819BBE534007CFBA0 /* AudioToolbox.framework in Frameworks */,
+				2F5D4DFA19BBE550007CFBA0 /* Ogg.framework in Frameworks */,
+				2F5D4DF419BBE173007CFBA0 /* Vorbis.framework in Frameworks */,
 				FC16A61017BFF3A4005ADB35 /* UIKit.framework in Frameworks */,
 				FC16A61217BFF3A4005ADB35 /* Foundation.framework in Frameworks */,
 				FC16A61417BFF3A4005ADB35 /* CoreGraphics.framework in Frameworks */,
+				72C053E5D147486A9323F4C3 /* libPods-ReadToMe.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,17 +150,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FDD7B0319B9A4850079DCB1 /* IDZAQAudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				2FDD7B0419B9A4CD0079DCB1 /* IDZAudioPlayer.h */,
+				2FDD7B0519B9A4CD0079DCB1 /* IDZAQAudioPlayer.h */,
+				2FDD7B0619B9A4CD0079DCB1 /* IDZAQAudioPlayer.m */,
+				2FDD7B0819B9A4CD0079DCB1 /* IDZAudioPlayerViewController.h */,
+				2FDD7B0A19B9A4CD0079DCB1 /* IDZAQAudioPlayerAppDelegate.h */,
+				2FDD7B0C19B9A4CD0079DCB1 /* IDZAudioDecoder.h */,
+				2FDD7B0D19B9A4CD0079DCB1 /* IDZOggVorbisFileDecoder.h */,
+				2FDD7B0E19B9A4CD0079DCB1 /* IDZOggVorbisFileDecoder.mm */,
+			);
+			name = IDZAQAudioPlayer;
+			sourceTree = "<group>";
+		};
 		FC16A60017BFF3A4005ADB35 = {
 			isa = PBXGroup;
 			children = (
-				FC16A66A17BFF7CC005ADB35 /* AudioToolbox.framework */,
-				FC16A66817BFF79F005ADB35 /* MediaPlayer.framework */,
-				FC16A66617BFF76E005ADB35 /* MobileCoreServices.framework */,
-				FC16A66417BFF71D005ADB35 /* CoreAudio.framework */,
 				FC16A61517BFF3A4005ADB35 /* ReadToMe */,
 				FC16A63C17BFF3A5005ADB35 /* ReadToMeTests */,
 				FC16A60E17BFF3A4005ADB35 /* Frameworks */,
 				FC16A60C17BFF3A4005ADB35 /* Products */,
+				570F68E2CED9490FA5A608F8 /* Pods-ReadToMe.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,10 +188,17 @@
 		FC16A60E17BFF3A4005ADB35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F5D4DF919BBE550007CFBA0 /* Ogg.framework */,
+				2F5D4DF719BBE534007CFBA0 /* AudioToolbox.framework */,
+				2F5D4DF519BBE476007CFBA0 /* CoreMedia.framework */,
+				2F5D4DF119BBE173007CFBA0 /* Ogg.framework */,
+				2F5D4DF219BBE173007CFBA0 /* Vorbis.framework */,
+				2F5D4DEF19BBDF2D007CFBA0 /* AudioToolbox.framework */,
 				FC16A60F17BFF3A4005ADB35 /* UIKit.framework */,
 				FC16A61117BFF3A4005ADB35 /* Foundation.framework */,
 				FC16A61317BFF3A4005ADB35 /* CoreGraphics.framework */,
 				FC16A63617BFF3A5005ADB35 /* SenTestingKit.framework */,
+				133E3D3253754824A6174FF1 /* libPods-ReadToMe.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -167,6 +206,7 @@
 		FC16A61517BFF3A4005ADB35 /* ReadToMe */ = {
 			isa = PBXGroup;
 			children = (
+				2FDD7B0319B9A4850079DCB1 /* IDZAQAudioPlayer */,
 				FC16662F1807DB2E0078EF18 /* ChapterController.h */,
 				FC16A65117BFF474005ADB35 /* Wheel */,
 				FC16A61E17BFF3A4005ADB35 /* derpAppDelegate.h */,
@@ -250,9 +290,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC16A64717BFF3A5005ADB35 /* Build configuration list for PBXNativeTarget "ReadToMe" */;
 			buildPhases = (
+				1EEACB4BD3034777BCE0C5A5 /* Check Pods Manifest.lock */,
 				FC16A60717BFF3A4005ADB35 /* Sources */,
 				FC16A60817BFF3A4005ADB35 /* Frameworks */,
 				FC16A60917BFF3A4005ADB35 /* Resources */,
+				431B2F2B12E64094AA519F82 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -289,6 +331,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = derp;
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Vann-Campbell, Tyler";
 				TargetAttributes = {
@@ -345,6 +388,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1EEACB4BD3034777BCE0C5A5 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		431B2F2B12E64094AA519F82 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-ReadToMe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FC16A63317BFF3A5005ADB35 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -365,6 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FDD7B1319B9A4CD0079DCB1 /* IDZOggVorbisFileDecoder.mm in Sources */,
 				FC16A61C17BFF3A4005ADB35 /* main.m in Sources */,
 				FC16A62017BFF3A4005ADB35 /* derpAppDelegate.m in Sources */,
 				FC16A62F17BFF3A4005ADB35 /* derpViewController.m in Sources */,
@@ -373,6 +447,7 @@
 				FC16A66017BFF4A0005ADB35 /* CDCircleOverlayView.m in Sources */,
 				FC16A66117BFF4A0005ADB35 /* CDCircleThumb.m in Sources */,
 				FC16A66217BFF4A0005ADB35 /* CDIconView.m in Sources */,
+				2FDD7B0F19B9A4CD0079DCB1 /* IDZAQAudioPlayer.m in Sources */,
 				FC16A66317BFF4A0005ADB35 /* Common.m in Sources */,
 				FC45E5AD17C1C16A00A3DF75 /* RadioClient.m in Sources */,
 				FC4754C81804E81E00392BCE /* ChapterWheelDataSource.m in Sources */,
@@ -479,6 +554,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -488,30 +564,44 @@
 		};
 		FC16A64817BFF3A5005ADB35 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 570F68E2CED9490FA5A608F8 /* Pods-ReadToMe.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ReadToMe",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ReadToMe/ReadToMe-Prefix.pch";
 				INFOPLIST_FILE = "ReadToMe/ReadToMe-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		FC16A64917BFF3A5005ADB35 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 570F68E2CED9490FA5A608F8 /* Pods-ReadToMe.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ReadToMe",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ReadToMe/ReadToMe-Prefix.pch";
 				INFOPLIST_FILE = "ReadToMe/ReadToMe-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

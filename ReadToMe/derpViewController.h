@@ -12,6 +12,7 @@
 #import "ChapterWheelDataSource.h"
 #import "ChapterController.h"
 #import "PlayerControls.h"
+#import "IDZAudioPlayer.h"
 
 @interface derpViewController  : UIViewController <CDCircleDelegate,CDCircleDataSource,RadioClientDelegate,ChapterController>
 @property (nonatomic,strong) IBOutlet UILabel* discoveryStatus;
@@ -28,5 +29,7 @@
 @property NSDictionary* books;
 @property ChapterWheelDataSource* chapterDataSource;
 @property NSMutableArray* pathSegments;
+@property (nonatomic,strong) id<IDZAudioPlayer> player;
+@property (nonatomic,strong) NSTimer* statusTimer;
 
 @end

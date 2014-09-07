@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface PlayerControls : UIView
+@property (nonatomic, strong) IBOutlet UILabel* tempLabel;
+@property (nonatomic, strong) IBOutlet UILabel* bytesLabel;
 @property (nonatomic, strong) IBOutlet UIButton* playButton;
 @property (nonatomic, strong) IBOutlet UIButton* pauseButton;
+@property (nonatomic, strong) IBOutlet UIButton* streamButton;
+@property (nonatomic, strong) IBOutlet UIButton* cancelButton;
 @end

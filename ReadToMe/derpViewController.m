@@ -11,18 +11,27 @@
 #import "CDCircleThumb.h"
 #import "CDIconView.h"
 #import "CDCircleOverlayView.h"
+#import "IDZOggVorbisFileDecoder.h"
+#import "IDZAQAudioPlayer.h"
+
+#include <stdio.h>
+#include <sys/stat.h>
 @interface derpViewController ()
 
 @end
 
 @implementation derpViewController
+@synthesize player = mPlayer;
 
 CGRect initialCirclePosition;
 CDCircle* circleMenu;
 
 RadioClient* radioClient;
+
 BOOL bookTitleDisplayed = NO;
 BOOL chapterDisplayed = NO;
+bool streamStarted = NO;
+bool streamCancelled = NO;
 CGPoint initialBookTitleCenterPoint;
 CGRect initialChapterTitleFrame;
 
@@ -270,6 +279,28 @@ CGRect initialChapterTitleFrame;
     }
 }
 
+-(void) radioRespondedWithStream:(NSString *)outputFile bytesRead:(NSUInteger)bytesRead {
+    if(streamCancelled){
+        return;
+    }
+    NSLog(@"%lu bytes read\n", (unsigned long)bytesRead);
+    self.controls.bytesLabel.text = [NSString stringWithFormat:@"%ld bytes",(unsigned long) bytesRead];
+    int chapfd = open([outputFile cStringUsingEncoding:NSUTF8StringEncoding], O_RDONLY);
+    struct stat filestat;
+    filestat.st_size = 0;
+    fstat(chapfd, &filestat);
+    NSLog(@"file bytes %lldl", filestat.st_size);
+    if (100000 < filestat.st_size && !streamStarted) {
+        NSURL* url = [NSURL fileURLWithPath:outputFile];
+        NSError* error;
+        IDZOggVorbisFileDecoder* decoder = [[IDZOggVorbisFileDecoder alloc] initWithContentsOfURL:url error:&error];
+        self.player = [[IDZAQAudioPlayer alloc] initWithDecoder:decoder error:&error];
+        [self.player play];
+        streamStarted = YES;
+    }
+    close(chapfd);
+}
+
 -(IBAction)panning:(id)sender{
     
     
@@ -345,6 +376,8 @@ CGRect initialChapterTitleFrame;
     self.controls.hidden = NO;
     [self.controls.playButton addTarget:self action:@selector(playChapter:) forControlEvents:UIControlEventTouchDown];
     [self.controls.pauseButton addTarget:self action:@selector(pauseChapter:) forControlEvents:UIControlEventTouchDown];
+    [self.controls.streamButton addTarget:self action:@selector(streamChapter:) forControlEvents:UIControlEventTouchDown];
+    [self.controls.cancelButton addTarget:self action:@selector(cancelStream:) forControlEvents:UIControlEventTouchDown];
     
     [UIView animateWithDuration:0.3 animations:^(void){
         self.chapterTitle.frame             = CGRectMake(CGRectGetMinX(self.chapterCircleContainer.frame),
@@ -376,7 +409,12 @@ CGRect initialChapterTitleFrame;
         
     }];
     chapterDisplayed = YES;
-    
+}
+
+-(void) checkStatus {
+    [radioClient checkTemperature:^(NSString *temperature) {
+        self.controls.tempLabel.text = [NSString stringWithFormat:@"%@ °F", temperature];
+    }];
 }
 
 -(IBAction) playChapter:(id)sender {
@@ -396,6 +434,36 @@ CGRect initialChapterTitleFrame;
     self.controls.playButton.userInteractionEnabled = YES;
 }
 
+-(IBAction) cancelStream:(id)sender {
+    if(streamStarted){
+        [self.player stop];
+        streamStarted = NO;
+    }
+    [radioClient cancelCurrentStream];
+    self.controls.streamButton.hidden = NO;
+    self.controls.streamButton.userInteractionEnabled = YES;
+    self.controls.cancelButton.hidden = YES;
+    self.controls.cancelButton.userInteractionEnabled = NO;
+    streamCancelled = YES;
+}
+
+-(IBAction) streamChapter:(id)sender {
+    if (streamStarted) {
+        [self.player stop];
+        streamStarted = NO;
+    }
+    [radioClient streamTrack:[NSString pathWithComponents:self.pathSegments]];
+    [self.statusTimer invalidate];
+    self.statusTimer = [NSTimer timerWithTimeInterval:1.0F target:self selector:@selector(checkStatus) userInfo:nil repeats:YES];
+    [self.statusTimer setTolerance:1.0F];
+    [[NSRunLoop mainRunLoop] addTimer:self.statusTimer forMode:NSRunLoopCommonModes];
+    self.controls.streamButton.hidden = YES;
+    self.controls.streamButton.userInteractionEnabled = NO;
+    self.controls.cancelButton.hidden = NO;
+    self.controls.cancelButton.userInteractionEnabled = YES;
+    streamCancelled = NO;
+}
+
 -(IBAction)resetView:(id)sender{
     chapterDisplayed = NO;
     [self repositionChapterCircleToInitialState];
@@ -407,6 +475,7 @@ CGRect initialChapterTitleFrame;
     [self hideBookTitle:nil];
     [self.view addGestureRecognizer:self.recognizer];
     [self.view removeGestureRecognizer:self.resetRecognizer];
+    [self.statusTimer invalidate];
     
 }
 
